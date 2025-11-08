@@ -1,39 +1,38 @@
 pipeline {
     agent any
 
-    tools {
-        dotnet 'dotnet6'  // name from Global Tool Configuration
-    }
-
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/vichuvijay/WebDriverTests.git'
-            }
-        }
-
-        stage('Restore Packages') {
-            steps {
-                bat 'dotnet restore'
+                git branch: 'main', url: 'https://github.com/vichuvijay/WebDriverTests.git'
             }
         }
 
         stage('Build') {
             steps {
-                bat 'dotnet build --configuration Release'
+                echo 'Building the project...'
+                sh 'dotnet build'
             }
         }
 
         stage('Run Tests') {
             steps {
-                bat 'dotnet test --logger "trx;LogFileName=test_results.trx"'
+                echo 'Running NUnit tests...'
+                sh 'dotnet test --logger "trx;LogFileName=test_results.trx"'
             }
         }
     }
 
     post {
         always {
-            junit '**/TestResults/*.trx'
+            echo 'Cleaning up workspace...'
+            deleteDir()
+        }
+        success {
+            echo 'Build and tests completed successfully ✅'
+        }
+        failure {
+            echo 'Build or tests failed ❌'
         }
     }
 }
