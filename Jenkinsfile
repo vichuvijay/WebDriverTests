@@ -11,14 +11,14 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the project...'
-                sh 'dotnet build'
+                bat 'dotnet build WebDriverTests.csproj'  // ✅ use bat for Windows
             }
         }
 
         stage('Run Tests') {
             steps {
-                echo 'Running NUnit tests...'
-                sh 'dotnet test --logger "trx;LogFileName=test_results.trx"'
+                echo 'Running tests...'
+                bat 'dotnet test WebDriverTests.csproj --logger:"trx;LogFileName=test_results.trx"' // ✅ Windows style
             }
         }
     }
@@ -29,7 +29,7 @@ pipeline {
             deleteDir()
         }
         success {
-            echo 'Build and tests completed successfully ✅'
+            echo 'Build and tests succeeded ✅'
         }
         failure {
             echo 'Build or tests failed ❌'
