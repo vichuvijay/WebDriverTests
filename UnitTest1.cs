@@ -12,8 +12,12 @@ namespace WebDriverTests
 
         [SetUp]
         public void Setup()
-    
+
         {
+             var options = new ChromeOptions();
+            options.AddArgument("--headless");             // Run Chrome without GUI
+            options.AddArgument("--no-sandbox");           // Required for Linux servers
+            options.AddArgument("--disable-dev-shm-usage"); // Prevents memory issues in Docker/Linux
             driver = new ChromeDriver();
             Console.WriteLine("test ");
         }
