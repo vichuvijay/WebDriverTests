@@ -35,7 +35,7 @@ namespace WebDriverTests
             string pageSource = driver.PageSource;
             Assert.That(pageSource,Does.Contain(searchText), $"Search results do not contain '{searchText}'");
             Console.WriteLine("assert complete");
-    //test dkdsks
+   
         }
 
         [TearDown]

@@ -102,3 +102,4 @@ C:\Users\DELL\Pictures\VsCode\WebDriverTests\obj\Debug\net9.0\WebDriverTests.pdb
 C:\Users\DELL\Pictures\VsCode\WebDriverTests\obj\Debug\net9.0\WebDriverTests.genruntimeconfig.cache
 C:\Users\DELL\Pictures\VsCode\WebDriverTests\obj\Debug\net9.0\ref\WebDriverTests.dll
 C:\Users\DELL\Pictures\VsCode\WebDriverTests\bin\Debug\net9.0\WebDriver.Support.dll
+C:\Users\DELL\Pictures\VsCode\WebDriverTests\obj\Debug\net9.0\WebDriverTests.sourcelink.json
